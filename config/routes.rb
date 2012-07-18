@@ -1,4 +1,10 @@
 SampleApp::Application.routes.draw do
+  resources :notes
+
+  resources :types
+
+  resources :things
+
   resources :users do
     member do
       get :following, :followers

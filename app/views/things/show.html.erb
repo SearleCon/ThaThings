@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Short name:</b>
+  <%= @thing.short_name %>
+</p>
+
+<p>
+  <b>Long name:</b>
+  <%= @thing.long_name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @thing.type_id %>
+</p>
+
+<p>
+  <b>Thing parent:</b>
+  <%= @thing.thing_parent_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_thing_path(@thing) %> |
+<%= link_to 'Back', things_path %>
