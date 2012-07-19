@@ -1,9 +1,22 @@
 <h1>New thing</h1>
 
-<%= render 'shared/show_types' %>
+<!--<%= render 'shared/show_types' %>-->
+
+
+<% @types = Type.all %>
+What type of thing is this? <br><br>
+
+<div class="tooltip-demo well">
+
+  <div class="btn-group" data-toggle="buttons-radio">
+    <% @types.each do |t| %>
+        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
+    <% end %>
+  </div>
+</div>
+
+
+
 <%= render 'form' %>
-<div class=span 4>
-
-
 
 <%= link_to 'Back', things_path %>

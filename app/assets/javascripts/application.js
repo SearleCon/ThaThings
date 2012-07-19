@@ -19,8 +19,14 @@ $(document).ready(function() {
 //  $("a").tooltip(); // this will trigger a tooltip on all <a> elements
     $("[rel=tooltip]").tooltip(); // this will trigger a tooltip on all that have rel="tooltip" elements
     $("[rel=popover]").popover('hide') // this will trigger a POPOVER on all that have rel="popover" elements
-
     $('.nav-tabs').button()
     $(".collapse").collapse()
     $('.typeahead').typeahead()
+//    $('.btn-group').find('.btn').bind('click',function(event){
+//        if($(this).attr('id')==='optionsRadios1'){
+//            alert($(this).attr('id'));
+//        } else {
+//            alert($(this).attr('id'));
+//        }
+//    });
 });

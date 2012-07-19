@@ -1,18 +1,11 @@
 <% @types = Type.all %>
-What type of thing is this? <br>
-<!--<select name="TypeSel">-->
-  <!--<% @types.each do |t| %>-->
-      <!--<option value=<% t.id %>><%= t.type_name %></option>-->
-  <!--<% end %>-->
-<!--</select>-->
-<!--</span>-->
-<!--</div>-->
+What type of thing is this? <br><br>
 
 <div class="tooltip-demo well">
-  <p class="muted" style="margin-bottom: 0;">
 
+  <div class="btn-group" data-toggle="buttons-radio">
     <% @types.each do |t| %>
-        <a href="#"><span class="btn btn-small btn-primary"><%= t.type_name %></span></a>
+        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
     <% end %>
-  </p>
+  </div>
 </div>

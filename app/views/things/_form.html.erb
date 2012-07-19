@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+
+    <script>
+        $('.btn-group').find('.btn').bind('click',function(event){
+        if($(this).attr('id')==='optionsRadios1'){
+            alert($(this).attr('id'));
+        } else {
+            alert($(this).attr('id'));
+        }
+        });
+    </script>
+
   <div class="field">
     <%= f.label :short_name %><br />
     <%= f.text_field :short_name %>
@@ -27,7 +38,8 @@
     <%= f.label :thing_parent_id %><br />
     <%= f.text_field :thing_parent_id %>
   </div>
-  <div class="actions">
+
+  <div class="actions" >
     <%= f.submit %>
   </div>
 <% end %>
