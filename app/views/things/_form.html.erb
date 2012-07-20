@@ -13,23 +13,24 @@
 
 
   <div class="field">
-    <%= f.label :short_name %><br />
+    <center><%= image_tag("briefdescription.jpg") %></center>
     <%= f.text_field :short_name %>
   </div>
   <div class="field">
-    <%= f.label :long_name %><br />
+    <center><%= image_tag("elaborate.jpg") %></center>
     <%= f.text_area :long_name %>
   </div>
   <div class="field" hidden="true">
     <%= f.number_field :type_id, :id => "type_ID" %>   <!-- used for the updating of the TypeID in application.js  -->
   </div>
 
-    <div class="field" title="box2">
+<!--     <div class="field" title="box2">
     <%= f.label :thing_parent_id %><br />
     <%= f.text_field :thing_parent_id %>
-  </div>
+  </div> -->
 
   <div class="actions">
-    <%= f.submit value='Add this thing!' %>
+    <%= f.submit value='Save!' %><%= image_tag("save.jpg") %>
+    
   </div>
 <% end %>

@@ -1,6 +1,20 @@
 <h1>Editing thing</h1>
 
+
+<% @types = Type.all %>
+
+<center><%= image_tag("thingtype.jpg") %></center>
+<div class="tooltip-demo well">
+
+  <div class="btn-group" data-toggle="buttons-radio">
+    <% @types.each do |t| %>
+        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
+    <% end %>
+  </div>
+</div>
+
+
+
 <%= render 'form' %>
 
-<%= link_to 'Show', @thing %> |
-<%= link_to 'Back', things_path %>
+<%= link_to image_tag("back.jpg"), things_path %>

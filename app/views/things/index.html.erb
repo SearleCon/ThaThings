@@ -1,30 +1,43 @@
-<h1>Listing things</h1>
+<!-- <br><center><%= image_tag("yourthings.jpg") %></center><br> -->
+<br>
 
-<table>
+<table class="table table-condensed">
   <tr>
-    <th>Short name</th>
-    <th>Long name</th>
-    <th>Type</th>
-    <th>Thing parent</th>
+    <th><br><%= image_tag("yourthings.jpg") %></th>
+    <!-- <th>Long name</th> -->
+    <th><%= image_tag("andtheirtypes.jpg") %></th>
+    <!-- <th>Thing parent</th> -->
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-
 <% @things.each do |thing| %>
   <tr>
-    <td><%= thing.short_name %></td>
-    <td><%= thing.long_name %></td>
-    <td><%= thing.type_id %></td>
-    <td><%= thing.thing_parent_id %></td>
-    <td><%= link_to 'Show', thing %></td>
-    <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-    <td><%= link_to 'Destroy', thing, confirm: 'Are you sure?', method: :delete %></td>
+	<td><a href="#element" rel="popover" title='<%= truncate(thing.short_name, :length => 20) %>' 
+						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= thing.short_name %></a></td>
+
+    <td>
+      <% if thing.type_id? %>
+              <span class="label label-info"><%= thing.type.type_name %></span>
+      <% else %>
+          <span class="label label-warning">Untagged</span>
+      <% end %>
+    </td>
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.created_at) %> ago.)</span><td>
+    <!-- <td><%= thing.thing_parent_id %></td> -->
+
+	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= will_paginate @things if @things.respond_to? :total_pages %>
 
-<%= link_to 'New Thing', new_thing_path %>
+<br><br>
+
+<%= link_to image_tag("addanother.jpg"), new_thing_path %>
