@@ -148,11 +148,22 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 10px;
   height: auto;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+/* added by Shaun - The below text area was part of the above */
+
+textarea {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  height: 150px;
   margin-bottom: 15px;
   @include box_sizing;
 }

@@ -12,16 +12,6 @@
   <% end %>
 
 
-    <script>
-        $('.btn-group').find('.btn').bind('click',function(event){
-        if($(this).attr('id')==='optionsRadios1'){
-            alert($(this).attr('id'));
-        } else {
-            alert($(this).attr('id'));
-        }
-        });
-    </script>
-
   <div class="field">
     <%= f.label :short_name %><br />
     <%= f.text_field :short_name %>
@@ -30,16 +20,16 @@
     <%= f.label :long_name %><br />
     <%= f.text_area :long_name %>
   </div>
-  <div class="field">
-    <%= f.label :type_id %><br />
-    <%= f.number_field :type_id %>
+  <div class="field" hidden="true">
+    <%= f.number_field :type_id, :id => "type_ID" %>   <!-- used for the updating of the TypeID in application.js  -->
   </div>
-  <div class="field">
+
+    <div class="field" title="box2">
     <%= f.label :thing_parent_id %><br />
     <%= f.text_field :thing_parent_id %>
   </div>
 
-  <div class="actions" >
-    <%= f.submit %>
+  <div class="actions">
+    <%= f.submit value='Add this thing!' %>
   </div>
 <% end %>

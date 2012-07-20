@@ -25,6 +25,7 @@ class ThingsController < ApplicationController
   # GET /things/new.json
   def new
     @thing = Thing.new
+    @thing.short_name = "1"
 
     respond_to do |format|
       format.html # new.html.erb

@@ -22,6 +22,10 @@ $(document).ready(function() {
     $('.nav-tabs').button()
     $(".collapse").collapse()
     $('.typeahead').typeahead()
+
+    $('[id="15"]').button('toggle');    // sets the toggle button with id=15 (change to the current default) on _show_types.html.erb to on
+
+
 //    $('.btn-group').find('.btn').bind('click',function(event){
 //        if($(this).attr('id')==='optionsRadios1'){
 //            alert($(this).attr('id'));
@@ -29,4 +33,8 @@ $(document).ready(function() {
 //            alert($(this).attr('id'));
 //        }
 //    });
+
+    $('div.btn-group button').click(function(){
+        $("#type_ID").attr('value', $(this).attr('id'));
+    })
 });
