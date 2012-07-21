@@ -1,8 +1,31 @@
 <% provide(:title, 'Help') %>
-<h1>Help</h1>
+<h2>How to use</h2>
+<h2><%= image_tag("logo.png") %></h2>
 <p>
-  Get help on the Ruby on Rails Tutorial at the
-  <a href="http://railstutorial.org/help">Rails Tutorial help page</a>.
-  To get help on this sample app, see the
-  <a href="http://railstutorial.org/book">Rails Tutorial book</a>.
+  Tutorial Video 1: ThaThings Introduction
 </p>
+
+<div class="center hero-unit">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>
+  Tutorial Video 2: About Things and Types
+</p>
+
+<div class="center hero-unit">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>
+  Tutorial Video 3: The power of Types
+</p>
+
+<div class="center hero-unit">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+
+<%= link_to "Share ThaThings with your friends", signup_path, 
+                            class: "btn btn-large btn-primary" %>

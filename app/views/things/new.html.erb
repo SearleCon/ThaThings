@@ -3,8 +3,10 @@
 <!--<%= render 'shared/show_types' %>-->
 
 <% @types = Type.all %>
-
 <center><%= image_tag("thingtype.jpg") %></center>
+<div align="right"><a class="label label-info" href="<%= new_type_path %>">Add more here</a></div>
+
+
 <div class="tooltip-demo well">
 
   <div class="btn-group" data-toggle="buttons-radio">
@@ -13,7 +15,7 @@
 	        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
 	    <% end %>
 	<% else %>
-		<%= link_to image_tag("back.jpg"), new_type_path %> <!-- change this to say "Oops! you don't have any types - Click here to add some!" -->
+		<%= link_to image_tag("back.jpg"), new_type_path %> <!-- SHAUN change this to say "Oops! you don't have any types - Click here to add some!" -->
 	<% end %>
   </div>
 </div>

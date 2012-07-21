@@ -12,12 +12,50 @@
   <% end %>
 
   <div class="field">
-    <center><%= image_tag("briefdescription.jpg") %></center>
+    <center><%= image_tag("nameyourtype.jpg") %></center><div align="right"><a class="label label-info" data-toggle="modal" href="#myModal" >Some inspiration</a></div>	
+	
     <%= f.text_field :type_name %>
   </div>
 
   <div class="actions">
-    <%= f.submit value='Save!' %><%= image_tag("save.jpg") %>
+    <%= f.submit value='Save!' %><%= image_tag("save2.jpg") %>
     
   </div>
 <% end %>
+
+<!-- This is the INSPIRATION modal form-->
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Here are some examples:</h3>
+  </div>
+  <div class="modal-body">
+    <p><a class="label label-info" href="#" >Inspiration Quote</a> 
+	   <a class="label label-info" href="#" >Reminder</a>
+	   <a class="label label-info" href="#" >To Do</a>
+	   <a class="label label-info" href="#" >Document</a>
+	   <a class="label label-info" href="#" >Person</a>
+	   <a class="label label-info" href="#" >Note</a>
+	   <a class="label label-info" href="#" >Meeting</a> 
+	   <a class="label label-info" href="#" >Command</a> 
+	   <a class="label label-info" href="#" >Framework</a>
+	   <a class="label label-info" href="#" >Favorite Website</a>
+	   <a class="label label-info" href="#" >Project</a>
+	   <a class="label label-info" href="#" >Task</a>
+	   <a class="label label-info" href="#" >Error</a>
+	   <a class="label label-info" href="#" >Story</a>
+	   <a class="label label-info" href="#" >Idea</a>
+	   <a class="label label-info" href="#" >Photograph</a>
+	   <a class="label label-info" href="#" >Poem</a>
+	   <a class="label label-info" href="#" >Important Date</a>
+	   <a class="label label-info" href="#" >Baby Name</a>
+	   <a class="label label-info" href="#" >Wedding</a>			
+	   <a class="label label-info" href="#" >Thought</a>
+	</p><br>
+	<p>Just see types as various categories in your life. Note that when adding a new type, be sure to keep it singular ("Person" instead of "People"), because a type will be linked to a single "Thing". Your list will be unique, as it is used to categorize your life. The sky is the limit!</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>

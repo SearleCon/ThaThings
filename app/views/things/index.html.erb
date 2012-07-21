@@ -15,7 +15,7 @@
 	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
 
 	<td><a href="#element" rel="popover" title='<%= truncate(thing.short_name, :length => 20) %>' 
-						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= thing.short_name %></a></td>
+						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= truncate(thing.short_name, :length => 57) %></a></td>
 
     <td>
       <% if thing.type_id? %>
@@ -24,7 +24,7 @@
           <span class="label label-warning">Untagged</span>
       <% end %>
     </td>
-    <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.updated_at) %> ago.)</span><td>
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.updated_at) %> ago)</span><td>
 	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>

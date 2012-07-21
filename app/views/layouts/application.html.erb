@@ -11,7 +11,10 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+      	<!-- <div class="alert alert-<%= key %>"><%= value %> -->
+       <div class="alert alert-info"><%= value %>                    <!-- Used to be the above line, but SHAUN made it this in order to force the blue notices for all messages -->
+			<a class="close" data-dismiss="alert" href="#">x</a>
+		</div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
