@@ -2,7 +2,9 @@ class TypesController < ApplicationController
   # GET /types
   # GET /types.json
   def index
-    @types = Type.all
+    # @types = Type.all
+    @types = Type.paginate :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +46,7 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.save
-        format.html { redirect_to @type, notice: 'Type was successfully created.' }
+        format.html { redirect_to @type, notice: 'You successfully added your new type!' }
         format.json { render json: @type, status: :created, location: @type }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.update_attributes(params[:type])
-        format.html { redirect_to @type, notice: 'Type was successfully updated.' }
+        format.html { redirect_to @type, notice: 'Type was successfully updated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

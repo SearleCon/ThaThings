@@ -12,18 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type_name %><br />
+    <center><%= image_tag("briefdescription.jpg") %></center>
     <%= f.text_field :type_name %>
   </div>
-  <div class="field">
-    <%= f.label :short_label %><br />
-    <%= f.text_field :short_label %>
-  </div>
-  <div class="field">
-    <%= f.label :long_lebel %><br />
-    <%= f.text_field :long_lebel %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit value='Save!' %><%= image_tag("save.jpg") %>
+    
   </div>
 <% end %>

@@ -18,3 +18,4 @@
 <%= render 'form' %>
 
 <%= link_to image_tag("back.jpg"), things_path %>
+<%= link_to image_tag("del.jpg"), @thing, confirm: 'Are you sure?', method: :delete %>

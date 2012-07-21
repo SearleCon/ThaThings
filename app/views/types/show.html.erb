@@ -1,20 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Type name:</b>
-  <%= @type.type_name %>
-</p>
+<div class="tooltip-demo well">
+  <p class="muted" style="margin-bottom: 0;">
+	  <span class="label label-info"><%= @type.type_name %></span>
+  </p>
+</div>
 
-<p>
-  <b>Short label:</b>
-  <%= @type.short_label %>
-</p>
-
-<p>
-  <b>Long lebel:</b>
-  <%= @type.long_lebel %>
-</p>
-
-
-<%= link_to 'Edit', edit_type_path(@type) %> |
-<%= link_to 'Back', types_path %>
+<%= link_to image_tag("editbtn.jpg"), edit_type_path(@thing) %>
+<%= link_to image_tag("back.jpg"), types_path %>
+<%= link_to image_tag("del.jpg"), @type, confirm: 'Are you sure?', method: :delete %>

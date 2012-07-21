@@ -1,19 +1,12 @@
-<!-- <br><center><%= image_tag("yourthings.jpg") %></center><br> -->
-<br>
-
 <table class="table table-condensed">
   <tr>
 	<th></th>
 	<th></th>
     <th><br><%= image_tag("yourthings.jpg") %></th>
-    <!-- <th>Long name</th> -->
     <th><%= image_tag("andtheirtypes.jpg") %></th>
-    <!-- <th>Thing parent</th> -->
     <th></th>
     <th></th>
     <th></th>
-    <!-- <th></th>
-    <th></th> -->
   </tr>
 
 <% @things.each do |thing| %>
@@ -31,18 +24,11 @@
           <span class="label label-warning">Untagged</span>
       <% end %>
     </td>
-    <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.created_at) %> ago.)</span><td>
-    <!-- <td><%= thing.thing_parent_id %></td> -->
-
-	<!-- <td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
-	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td> -->
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.updated_at) %> ago.)</span><td>
 	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>
 
 <%= will_paginate @things if @things.respond_to? :total_pages %>
-
-<br>
-
 <%= link_to image_tag("addanother.jpg"), new_thing_path %>

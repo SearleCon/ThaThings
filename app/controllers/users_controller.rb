@@ -27,8 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Welcome to ThaThings!"
+      redirect_to things_path
     else
       render 'new'
     end
@@ -73,10 +73,10 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to(things_path) unless current_user?(@user)
     end
     
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(things_path) unless current_user.admin?
     end
 end

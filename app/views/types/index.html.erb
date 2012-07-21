@@ -1,10 +1,7 @@
-<h1>Listing types</h1>
-
-<table>
+<table class="table table-condensed">
   <tr>
-    <th>Type name</th>
-    <th>Short label</th>
-    <th>Long lebel</th>
+	<th></th>
+    <th><br><%= image_tag("types.jpg") %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,16 +9,17 @@
 
 <% @types.each do |type| %>
   <tr>
-    <td><%= type.type_name %></td>
-    <td><%= type.short_label %></td>
-    <td><%= type.long_lebel %></td>
-    <td><%= link_to 'Show', type %></td>
-    <td><%= link_to 'Edit', edit_type_path(type) %></td>
-    <td><%= link_to 'Destroy', type, confirm: 'Are you sure?', method: :delete %></td>
+	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), type %></span>
+	<span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_type_path(type) %></span></td>
+
+    <td><span class="label label-info"><%= type.type_name %></span></td>
+
+    <td></td>
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(type.updated_at) %> ago.)</span><td>
+	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), type, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Type', new_type_path %>
+<%= will_paginate @types if @types.respond_to? :total_pages %>
+<%= link_to image_tag("addanother.jpg"), new_type_path %>

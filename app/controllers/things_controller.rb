@@ -2,7 +2,7 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.all
+    # @things = Thing.all
     @things = Thing.paginate :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
 
     respond_to do |format|
@@ -45,7 +45,7 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       if @thing.save
-        format.html { redirect_to things_path, notice: 'Thing was successfully created.' }
+        format.html { redirect_to things_path, notice: 'Your thing was successfully created!' }
         format.json { render json: @thing, status: :created, location: @thing }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       if @thing.update_attributes(params[:thing])
-        format.html { redirect_to @thing, notice: 'Thing was successfully updated.' }
+        format.html { redirect_to things_path, notice: 'Your thing was successfully updated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

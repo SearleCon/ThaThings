@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @type %> |
-<%= link_to 'Back', types_path %>
+<%= link_to image_tag("back.jpg"), type_path %>
+<%= link_to image_tag("del.jpg"), @type, confirm: 'Are you sure?', method: :delete %>
