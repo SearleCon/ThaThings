@@ -3,6 +3,8 @@
 
 <table class="table table-condensed">
   <tr>
+	<th></th>
+	<th></th>
     <th><br><%= image_tag("yourthings.jpg") %></th>
     <!-- <th>Long name</th> -->
     <th><%= image_tag("andtheirtypes.jpg") %></th>
@@ -10,12 +12,15 @@
     <th></th>
     <th></th>
     <th></th>
-    <th></th>
-    <th></th>
+    <!-- <th></th>
+    <th></th> -->
   </tr>
 
 <% @things.each do |thing| %>
   <tr>
+	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+
 	<td><a href="#element" rel="popover" title='<%= truncate(thing.short_name, :length => 20) %>' 
 						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= thing.short_name %></a></td>
 
@@ -29,8 +34,8 @@
     <td><span class="timestamp">(Updated <%= time_ago_in_words(thing.created_at) %> ago.)</span><td>
     <!-- <td><%= thing.thing_parent_id %></td> -->
 
-	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
-	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+	<!-- <td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td> -->
 	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
@@ -38,6 +43,6 @@
 
 <%= will_paginate @things if @things.respond_to? :total_pages %>
 
-<br><br>
+<br>
 
 <%= link_to image_tag("addanother.jpg"), new_thing_path %>

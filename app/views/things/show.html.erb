@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  This is marked as type "<%= @thing.type.type_name %>"
+  <% if @thing.type_id.nil? %> 
+	This thing is <span class="label label-warning">untagged</span><br><br>
+  <% else %>
+	This thing is marked as type <span class="label label-info"><%= @thing.type.type_name %></span><br><br>
+  <% end %>
 </p>
 
 <div class="tooltip-demo well">

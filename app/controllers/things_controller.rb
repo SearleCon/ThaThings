@@ -3,7 +3,7 @@ class ThingsController < ApplicationController
   # GET /things.json
   def index
     @things = Thing.all
-    @things = Thing.paginate :page => params[:page], :per_page => 20, :order => 'updated_at DESC'
+    @things = Thing.paginate :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
