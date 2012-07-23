@@ -1,6 +1,9 @@
 <% provide(:title, "Edit user") %> 
-<h1>Update your profile</h1>
+<h2>Update your profile</h2>
 
+
+<%= gravatar_for @user %>
+<p><a href="http://gravatar.com/emails">Change Photo</a></p><br><br>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
@@ -20,5 +23,12 @@
   <%= f.submit "Save changes", :class => "btn btn-large btn-primary" %>
 <% end %>
 
-<%= gravatar_for @user %>
-<a href="http://gravatar.com/emails">change</a>
+
+<!-- <span rel="tooltip" title="WARNING! This will DELETE your entire account and ALL the DATA associated with it! THIS CANNOT BE UNDONE!"><%= link_to image_tag("trash.jpg"), @user, confirm: 'WARNING! This will DELETE your entire account and ALL the DATA associated with it! THIS CANNOT BE UNDONE! Are you absolutely sure you want to do this?', method: :delete %></span>(Delete your Account) -->
+
+
+<div class="tooltip-demo well">
+  <p class="muted" style="margin-bottom: 0;"> <b>WARNING!</b> Clicking on the following button will DELETE your account, along with ALL its associated data!  
+	<span class="btn btn-small btn-danger"><span rel="tooltip" title="WARNING, WARNING, WARNING!!! This will DELETE your entire account and ALL the DATA associated with it! THIS CANNOT BE UNDONE!"><i class="icon-trash"></i><%= link_to " Delete my account", @user, confirm:  'WARNING! This will DELETE your entire account and ALL the DATA associated with it! THIS CANNOT BE UNDONE! Are you absolutely sure you want to do this?', method: :delete %></span></span>
+  </p>
+</div>

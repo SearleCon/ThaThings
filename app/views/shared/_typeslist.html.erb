@@ -1,0 +1,20 @@
+<h1>Example 1</h1>
+<ul class="nav nav-pills">
+  <li class="active">
+	<% @types.each do |type| %>
+		    <a href="#"><%= type.type_name %></a>
+	<% end %>
+  </li>
+</ul>
+
+<h1>Example 2</h1>
+<ul class="nav nav-list">
+  <% @types.each do |type| %>
+	  <li>
+	    <a href="#">
+	      <i class="icon-tag"></i>
+	      <%= type.type_name %>
+	    </a>
+	  </li>
+  <% end %>
+</ul>

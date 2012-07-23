@@ -1,0 +1,16 @@
+<h2>Settings</h2>
+
+<table>
+  <tr>
+    <th>Number of items per screen</th>
+  </tr>
+
+<% @settings.each do |setting| %>
+  <tr>
+    <td><%= setting.rowcountperpage %></td>
+    <td><%= link_to 'Change', edit_setting_path(setting) %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<%= link_to image_tag("back.jpg"), things_path %>

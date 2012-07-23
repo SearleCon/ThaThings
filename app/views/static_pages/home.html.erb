@@ -1,22 +1,12 @@
+<!-- Start This is for the share buttons -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-84d8d783-c4b3-63aa-165d-7c93ac957388"}); </script>
+<!-- End This is for the share buttons -->
+
 <% provide(:title, 'Home') %>
-<% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
-      </section>
-    </aside>
-    <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>  
+<% if signed_in? %>   
+  <%= render 'shared/start' %>
 <% else %>
   <div class="center hero-unit">
 
@@ -24,11 +14,17 @@
     <!--<iframe width="640" height="480" src="http://www.youtube.com/embed/AySreStPA7g"></iframe>-->
 
     <br> <br>
-    <h2>
-      Welcome to ThaThings
+    <h2> <!-- Welcome Logo - Welcome to ThaThings -->
+      <%= image_tag("mainlogo.png") %>
     </h2>
 
     <%= link_to "Sign up now!", signup_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
+
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_email_large' displayText='Email'></span><br>
+<%= image_tag("share.jpg") %>
 <% end %> 

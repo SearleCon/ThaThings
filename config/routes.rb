@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :settings
+
   resources :notes
 
   resources :types
