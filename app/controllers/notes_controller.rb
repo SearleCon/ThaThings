@@ -3,6 +3,7 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @notes = Note.all
+    @notes = Note.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +42,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
+    @note.user_id = current_user.id    
 
     respond_to do |format|
       if @note.save

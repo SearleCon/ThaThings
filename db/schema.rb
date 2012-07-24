@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723140106) do
+ActiveRecord::Schema.define(:version => 20120724094054) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120723140106) do
     t.integer  "thing_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "relationships", :force => true do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20120723140106) do
     t.string   "thing_parent_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "types", :force => true do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20120723140106) do
     t.string   "long_lebel"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

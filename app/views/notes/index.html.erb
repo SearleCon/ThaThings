@@ -1,9 +1,10 @@
-<h1>Listing notes</h1>
+<h2>Your Notes</h2>
 
-<table>
+<table class="table table-condensed">
   <tr>
-    <th>Note text</th>
-    <th>Thing</th>
+    <th></th>
+    <th></th>
+    <th>Notes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,15 +12,18 @@
 
 <% @notes.each do |note| %>
   <tr>
-    <td><%= note.note_text %></td>
-    <td><%= note.thing_id %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, confirm: 'Are you sure?', method: :delete %></td>
+	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), note %></span></td>
+	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_note_path(note) %></span></td>	
+	<td><a href="#element" rel="popover" title='Note' 
+						   data-content='<%= truncate(note.note_text, :length => 200) %>'><%= truncate(note.note_text, :length => 57) %></a></td>
+    <td><%= note.thing %></td>
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(note.updated_at) %> ago)</span><td>
+	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), note, confirm: 'Are you sure?', method: :delete %></span></td>
+
+
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Note', new_note_path %>
+<%= link_to image_tag('note.jpg'), new_note_path %>

@@ -5,7 +5,7 @@ class ThingsController < ApplicationController
     # @things = Thing.all
     
     @setting = Setting.find(:all, :conditions => ["user_id=?", current_user.id])
-    @things = Thing.paginate :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => 'updated_at DESC'
+    @things = Thing.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => 'updated_at DESC'
 
 
     respond_to do |format|
@@ -45,6 +45,8 @@ class ThingsController < ApplicationController
   # POST /things.json
   def create
     @thing = Thing.new(params[:thing])
+    @thing.user_id = current_user.id    
+    
 
     respond_to do |format|
       if @thing.save

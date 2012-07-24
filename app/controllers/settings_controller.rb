@@ -26,7 +26,7 @@ class SettingsController < ApplicationController
   # GET /settings/new.json
   def new
     @setting = Setting.new
-    @setting.user_id = current_user.id
+#    @setting.user_id = current_user.id  SHAUN, this WAS HERE, but moved it to CREATE instead
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +43,7 @@ class SettingsController < ApplicationController
   # POST /settings.json
   def create
     @setting = Setting.new(params[:setting])
+    @setting.user_id = current_user.id    
     
     respond_to do |format|
       if @setting.save

@@ -1,4 +1,5 @@
-<% @types = Type.all %>
+<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>
+
 What type of thing is this? <br><br>
 
 <div class="tooltip-demo well">

@@ -3,7 +3,9 @@ class TypesController < ApplicationController
   # GET /types.json
   def index
     # @types = Type.all
-    @types = Type.paginate :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
+    @types = Type.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
+#    @types = Type.find(:all, :conditions => ["user_id=?", current_user.id])
+    
     
 
     respond_to do |format|
@@ -26,7 +28,7 @@ class TypesController < ApplicationController
   # GET /types/new
   # GET /types/new.json
   def new
-    @type = Type.new
+    @type = Type.new    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +45,7 @@ class TypesController < ApplicationController
   # POST /types.json
   def create
     @type = Type.new(params[:type])
+    @type.user_id = current_user.id
 
     respond_to do |format|
       if @type.save

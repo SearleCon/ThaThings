@@ -2,7 +2,8 @@
 
 <!--<%= render 'shared/show_types' %>-->
 
-<% @types = Type.all %>
+<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>
+
 <center><%= image_tag("thingtype.jpg") %></center>
 <div align="right"><a class="label label-info" href="<%= new_type_path %>">Add more here</a></div>
 
