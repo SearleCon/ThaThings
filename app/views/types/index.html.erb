@@ -15,7 +15,7 @@
     <td><span class="label label-info"><%= type.type_name %></span></td>
 
     <td></td>
-    <td><span class="timestamp">(Updated <%= time_ago_in_words(type.updated_at) %> ago)</span><td>
+    <td><span class="timestamp">(Updated <%= time_ago_in_words(type.updated_at) %> ago)</span></td>
 	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), type, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>

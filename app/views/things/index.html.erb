@@ -2,7 +2,7 @@
   <tr>
 	<th></th>
 	<th></th>
-    <th><br><%= image_tag("yourthings.jpg") %></th>
+	<th><br><%= image_tag("yourthings.jpg") %></th>
     <th><%= image_tag("andtheirtypes.jpg") %></th>
     <th></th>
     <th></th>
@@ -15,9 +15,21 @@
 	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
 
 	<td><a href="#element" rel="popover" title='<%= truncate(thing.short_name, :length => 20) %>' 
-						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= truncate(thing.short_name, :length => 57) %></a></td>
-
+						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= truncate(thing.short_name, :length => 50) %></a>
+						   
+						<% if !thing.notes.empty? %>
+						
+						<a href="#element" rel="popover" title='Note' 
+											   data-content='<%= truncate(thing.notes[0].note_text, :length => 200) %>'><%= image_tag('notesmall.png') %></a>								
+							<% if thing.notes.count > 1 %>
+								<%= '('+thing.notes.count.to_s+')' %>
+							<% end %>	
+								
+					     <% end %></span></td>
+<!-- <i class="icon-list-alt"></i> -->
     <td>
+
+
       <% if thing.type_id? %>
               <span class="label label-info"><%= thing.type.type_name %></span>
       <% else %>

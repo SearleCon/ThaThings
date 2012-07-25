@@ -20,6 +20,20 @@
   </p>
 </div>
 
+<% if !@thing.notes.empty? %>
+<span class="label label-warning">Notes</span>
+
+	<% @thing.notes.each do |note| %>
+	<div class="tooltip-demo well">
+	  <p class="muted" style="margin-bottom: 0;">
+		  <%= link_to note.note_text, edit_note_path(note) %>
+	  </p>
+	</div>
+	<% end %>
+<% end %>
+
+<%= render('quick_note') %>
+
 <%= link_to image_tag("editbtn.jpg"), edit_thing_path(@thing) %>
 <%= link_to image_tag("back.jpg"), things_path %>
 <%= link_to image_tag("del.jpg"), @thing, confirm: 'Are you sure?', method: :delete %>

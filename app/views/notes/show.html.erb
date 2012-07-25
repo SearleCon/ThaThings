@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Note text:</b>
-  <%= @note.note_text %>
-</p>
+<div class="tooltip-demo well">
+  <p class="muted" style="margin-bottom: 0;">
+	  <span class="label label-warning">Note:</span><br>
+	  <%= @note.note_text %>
+  </p>
+</div>
 
-<p>
-  <b>Thing:</b>
-  <%= @note.thing_id %>
-</p>
+<% if @note.thing %>
+The above note it linked to the following thing:
+	<div class="tooltip-demo well">
+	  <p class="muted" style="margin-bottom: 0;">
+		  <%= @note.thing.short_name %>
+	  </p>
+	</div>
 
+<% end %>
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+<%= link_to image_tag("editbtn.jpg"), edit_note_path(@note) %>
+<%= link_to image_tag("back.jpg"), notes_path %>
+<%= link_to image_tag("del.jpg"), @note, confirm: 'Are you sure you want to delete this note?', method: :delete %>

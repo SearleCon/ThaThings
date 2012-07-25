@@ -1,28 +1,25 @@
-<h2>Your Notes</h2>
-
 <table class="table table-condensed">
   <tr>
     <th></th>
     <th></th>
-    <th>Notes</th>
+    <th><br><%= image_tag('notes.jpg')%></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @notes.each do |note| %>
-  <tr>
-	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), note %></span></td>
-	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_note_path(note) %></span></td>	
-	<td><a href="#element" rel="popover" title='Note' 
-						   data-content='<%= truncate(note.note_text, :length => 200) %>'><%= truncate(note.note_text, :length => 57) %></a></td>
-    <td><%= note.thing %></td>
-    <td><span class="timestamp">(Updated <%= time_ago_in_words(note.updated_at) %> ago)</span><td>
-	<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), note, confirm: 'Are you sure?', method: :delete %></span></td>
+	<% @notes.each do |note| %>
+	  <tr>
+		<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), note %></span></td>
+		<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_note_path(note) %></span></td>	
+		<td><a href="#element" rel="popover" title='Note' 
+							   data-content='<%= truncate(note.note_text, :length => 200) %>'><span class="label label-warning"><%= truncate(note.note_text, :length => 57)%></span></a></td>
 
-
-  </tr>
-<% end %>
+		<td></td> <!-- SHAUN update this line with the Linked to Thing / Type icon -->
+	    <td><span class="timestamp">(Updated <%= time_ago_in_words(note.updated_at) %> ago)</span></td>
+		<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), note, confirm: 'Are you sure?', method: :delete %></span></td>
+	  </tr>
+	<% end %>
 </table>
 
 <br />

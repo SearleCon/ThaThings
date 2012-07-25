@@ -11,15 +11,14 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :note_text %><br />
+    <center><%= image_tag("nameyournote.jpg") %></center>		
     <%= f.text_area :note_text %>
   </div>
-  <div class="field">
-    <%= f.label :thing_id %><br />
-    <%= f.number_field :thing_id %>
-  </div>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit %><%= image_tag("save2.jpg") %>
   </div>
 <% end %>
