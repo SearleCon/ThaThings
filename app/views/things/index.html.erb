@@ -18,15 +18,14 @@
 						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= truncate(thing.short_name, :length => 50) %></a>
 						   
 						<% if !thing.notes.empty? %>
-						
-						<a href="#element" rel="popover" title='Note' 
-											   data-content='<%= truncate(thing.notes[0].note_text, :length => 200) %>'><%= image_tag('notesmall.png') %></a>								
 							<% if thing.notes.count > 1 %>
-								<%= '('+thing.notes.count.to_s+')' %>
-							<% end %>	
-								
-					     <% end %></span></td>
-<!-- <i class="icon-list-alt"></i> -->
+								<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+							<% else %>
+								<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+							<% end %>							
+					     <% end %></td>
+
+
     <td>
 
 
