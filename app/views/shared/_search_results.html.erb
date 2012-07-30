@@ -1,0 +1,7 @@
+<div class="tooltip-demo well">
+
+	<div align="right"><%= link_to "(Clear Search)", things_path %></div>	
+  <p class="muted" style="margin-bottom: 0;">
+	<b><%= @things.count %> thing(s) found</b> containing the search string <%= "'#{params[:search]}'" %> (In their heading or explanation). 
+  </p>
+</div>

@@ -6,7 +6,10 @@ class ThingsController < ApplicationController
     
     @setting = Setting.find(:all, :conditions => ["user_id=?", current_user.id])
     @things = Thing.paginate :include => :notes, :conditions => ["user_id=?", current_user.id], 
-                             :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => 'updated_at DESC'    
+                             :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => 'updated_at DESC'  
+                             
+    @things = @things.search(params[:search]) # SHAUN SEARCH
+      
 
     respond_to do |format|
       format.html # index.html.erb

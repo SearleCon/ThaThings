@@ -1,3 +1,9 @@
+<% if params[:search] %>
+	<% if params[:search] != '' %>
+		<%= render "shared/search_results" %>
+	<% end %>
+<% end %>
+
 <table class="table table-condensed">
   <tr>
 	<th></th>
@@ -42,4 +48,4 @@
 </table>
 
 <%= will_paginate @things if @things.respond_to? :total_pages %>
-<%= link_to image_tag("addanother.jpg"), new_thing_path %>
+<%= link_to image_tag("addanother.jpg"), new_thing_path %> 

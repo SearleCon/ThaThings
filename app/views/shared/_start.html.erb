@@ -20,28 +20,21 @@
 				<tr><td><%= link_to "Sign out", signout_path, method: "delete" %></td></tr>
 			</table>
 		 </div>
-
+		
 		 <div class="tooltip-demo well">
 			<table class="muted" style="margin-bottom: 1;">
-
-				<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>
-				
+				<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>				
 					<%= form_tag types_path, :id => "types_filter", :method => 'get', :remote => true do %>
-				
-					<% @types.each do |t| %>
-					        <tr><td><%= check_box_tag 't.id[]', t.id -%>
-					        <%= t t.type_name -%></tr></td>
-					<% end %>
-				
-				<% end %>
-
+						<% @types.each do |t| %>
+						        <tr><td><%= check_box_tag 't.id[]', t.id -%>
+						        <%= t t.type_name -%></tr></td>
+						<% end %>
+				    <% end %>
 			</table>
 		 </div>
 
 
     </div>
-
-
 
 
     <div class="span9">
