@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
       sign_in user
 
       # SHAUN - This is where the form gets redirected after signin!
-      redirect_to things_path
+      # redirect_to things_path
+      redirect_to root_path
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

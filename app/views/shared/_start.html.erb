@@ -1,8 +1,53 @@
-<div class="tooltip-demo well">
-  <p class="muted" style="margin-bottom: 0;">
-	  This is the Dashboard page!
-  </p>
-</div>
+<% @tng = Thing.find(:all) %>
+<% @typ = Type.find(:all) %>
+<% @nte = Note.find(:all) %>
 
-<%= link_to image_tag("yourthings.jpg"), things_path %>
-<%= link_to image_tag("types.jpg"), types_path %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+		 <div class="tooltip-demo well">
+			<table class="muted" style="margin-bottom: 1;">
+				<tr><td><%= image_tag("totals.png") %></td></tr>
+				<tr><td>Things: </td><td><div align="right"><b><%= @tng.count %></b></div></tr>
+				<tr><td>Types: </td><td><div align="right"><b><%= @typ.count %></b></div></tr>
+				<tr><td>Notes: </td><td><div align="right"><b><%= @nte.count %></b></div></tr>
+				<tr><td><br></td></tr>
+				<tr><td><%= image_tag("menu.png") %></td></tr>
+				<tr><td><%= link_to "Settings", settings_path %></td></tr>
+				<tr><td><%= link_to "Profile", edit_user_path(current_user) %></td></tr>
+				<tr><td><%= link_to "Search", edit_user_path(current_user) %></td></tr>
+				<tr><td><br></td></tr>
+				<tr><td><%= link_to "Sign out", signout_path, method: "delete" %></td></tr>
+			</table>
+		 </div>
+
+		 <div class="tooltip-demo well">
+			<table class="muted" style="margin-bottom: 1;">
+
+				<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>
+				
+					<%= form_tag types_path, :id => "types_filter", :method => 'get', :remote => true do %>
+				
+					<% @types.each do |t| %>
+					        <tr><td><%= check_box_tag 't.id[]', t.id -%>
+					        <%= t t.type_name -%></tr></td>
+					<% end %>
+				
+				<% end %>
+
+			</table>
+		 </div>
+
+
+    </div>
+
+
+
+
+    <div class="span9">
+		<%= link_to image_tag("menuthings.jpg"), things_path %>
+		<%= link_to image_tag("menutypes.jpg"), types_path %>
+		<%= link_to image_tag("menunotes.jpg"), notes_path %>
+    </div>
+  </div>
+</div>

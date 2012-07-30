@@ -1,16 +1,18 @@
 <h2>Settings</h2>
 
 <table>
-  <tr>
-    <th>Number of items per screen</th>
-  </tr>
 
 <% @settings.each do |setting| %>
   <tr>
-    <td><%= setting.rowcountperpage %></td>
-    <td><%= link_to 'Change', edit_setting_path(setting) %></td>
+    <td>Number of rows per table:</td>
+    <td><b><%= setting.rowcountperpage %></b></td>
   </tr>
+  <tr>
+    <td>Show Notes in Menu:</td>
+    <td><b><%= check_box_tag '', '', setting.show_notes, :disabled => true %></b></td>
+  </tr>
+
 <% end %>
 </table>
 <br>
-<%= link_to image_tag("back.jpg"), things_path %>
+<%= link_to image_tag("editbtn.jpg"), edit_setting_path(@settings) %>

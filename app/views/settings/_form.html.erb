@@ -15,6 +15,12 @@
     <%= f.label 'Number of items so show per screen' %><br />
     <%= f.number_field :rowcountperpage %>
   </div>
+
+  <div class="field">
+    <%= f.label 'Show Notes in menu' %><br />
+    <%= f.check_box :show_notes %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
