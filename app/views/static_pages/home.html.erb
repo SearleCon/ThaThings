@@ -9,14 +9,13 @@
   <%= render 'shared/start' %>
 <% else %>
 
-<!-- SHAUN - This next if statement is for checking if the users are accessing this from an iOS device -->
-
-  <% if iphone_user_agent? %> # Show message for iPhone users
+  <!-- SHAUN - This next if statement is for checking if the users are accessing this from an iOS device -->
+  <% if iphone_user_agent? %>
     <div class="tooltip-demo well">
-      <p>We have detected that you are accessing the site from an iOS device. We are frantically working on a mobile app version for ThaThings. Be sure to check our site and signup for the newsletter to be notified of the availability of the app!<a href="http://www.searleconsulting.com/">Click here to go there now.</a>.</p>
+      <h2>Welcome Mobile User!</h2>
+      <p>We have detected that you are accessing the site from an iOS device. <br>We are working on a mobile app version for ThaThings. Be sure to check our site and signup for the newsletter to be notified of the availability of the app!<br><a href="http://www.searleconsulting.com/">Click here to go there now.</a></p>
     </div>    
   <% end %>
-
 
 
   <div class="center hero-unit">
