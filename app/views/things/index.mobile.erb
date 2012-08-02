@@ -1,0 +1,10 @@
+<h2>Things</h2>
+  <ul>
+    <% for thing in @things %>
+    <li class="arrow">
+      <%= link_to h(thing.short_name), thing %>
+      <small class="counter"><%= thing.short_name.size %></small>
+    </li>
+    <% end %>
+  </ul>
+  <ul><li class="arrow"><%= link_to "New Thing", new_thing_path %></li></ul>

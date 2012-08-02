@@ -5,6 +5,18 @@
   </small>
   <nav>
     <ul>
+
+	  <li><p>
+	    <% if mobile_device? %>
+	      <%= link_to "Full Site", :mobile => 0 %>
+	    <% else %>
+	      <%= link_to "Mobile Site", :mobile => 1 %>
+	    <% end %>
+	  </p></li>
+
+
+
+
       <li><%= link_to "About",   about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
       <li><a href="http://news.railstutorial.org/">News</a></li>

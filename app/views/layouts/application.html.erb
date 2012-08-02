@@ -4,10 +4,14 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
+    
+    <%= stylesheet_link_tag 'mobile' if mobile_device? %>
+    
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>    
   </head>
   <body>
+
     <%= render 'layouts/header' %>
     <div class="container">
       <% flash.each do |key, value| %>
