@@ -1,4 +1,7 @@
-<h2>Things</h2>
+<ul><li class="forward"><%= link_to "Add New Thing", new_thing_path %></li></ul>
+
+<h2>Your Things</h2>
+
   <ul>
     <% for thing in @things %>
     <li class="arrow">
@@ -7,4 +10,4 @@
     </li>
     <% end %>
   </ul>
-  <ul><li class="arrow"><%= link_to "New Thing", new_thing_path %></li></ul>
+  <ul><li class="arrow"><%= link_to "Add New Thing", new_thing_path %></li></ul>

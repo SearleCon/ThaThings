@@ -7,17 +7,28 @@
 
 
 <!-- jQTouch START -->
-		<link rel="stylesheet" href="jqtouch/themes/css/jqtouch.css" title="jQTouch">
-		<script src="jqtouch/src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <link rel="stylesheet" href="jqtouch/themes/css/apple.css" title="jQTouch"> -->
+		<!-- <script src="jqtouch/src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="jqtouch/src/lib/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script>
 		<script src="jqtouch/src/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script>
 		<script src="jqtouch/extensions/jqt.themeswitcher.min.js" type="application/x-javascript" charset="utf-8"></script>
-
+		
+		 -->
+		<style type="text/css" media="screen">@import "jqtouch/themes/css/apple.css";</style>
+		<script src="jqtouch/src/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jqtouch/src/jqtouch.min.js" type="text/javascript" charset="utf-8"></script>
 
 
 		<script type="text/javascript">
-		var jQT = new $.jQTouch({
-		});
+
+
+     		$(document).ready(function() { 
+			
+			var jQT = new $.jQTouch({
+			});
+			
+			});
+
 		</script>
 <!-- jQTouch End -->
 
@@ -25,6 +36,7 @@
       <%= yield(:head) %>
     </head>
     <body>
+
       <div class="current">
 
 		<div class="toolbar">

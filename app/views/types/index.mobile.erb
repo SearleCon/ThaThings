@@ -1,0 +1,10 @@
+<h2>Types</h2>
+  <ul>
+    <% for type in @types %>
+    <li class="arrow">
+      <%= link_to h(type.type_name), type %>
+      <small class="counter">10</small>
+    </li>
+    <% end %>
+  </ul>
+  <ul><li class="arrow"><%= link_to "New Type", new_type_path %></li></ul>
