@@ -1,13 +1,12 @@
-<ul><li class="forward"><%= link_to "Add New Thing", new_thing_path %></li></ul>
+<ul class="rounded"><li class="forward"><%= link_to "Add New Thing", new_thing_path %></li></ul>
 
 <h2>Your Things</h2>
 
-  <ul>
+  <ul class="rounded">
     <% for thing in @things %>
     <li class="arrow">
       <%= link_to h(thing.short_name), thing %>
-      <small class="counter"><%= thing.short_name.size %></small>
     </li>
     <% end %>
   </ul>
-  <ul><li class="arrow"><%= link_to "Add New Thing", new_thing_path %></li></ul>
+  <ul class="rounded"><li class="arrow"><%= link_to "Add New Thing", new_thing_path %></li></ul>

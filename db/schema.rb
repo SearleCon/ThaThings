@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726100424) do
+ActiveRecord::Schema.define(:version => 20120807082722) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(:version => 20120726100424) do
     t.text     "long_name"
     t.integer  "type_id"
     t.string   "thing_parent_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "favorite",        :default => false
   end
 
   create_table "types", :force => true do |t|

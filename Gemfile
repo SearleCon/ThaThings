@@ -22,7 +22,8 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails'
+gem 'best_in_place'
 
 group :test do
   gem 'capybara', '1.1.2'

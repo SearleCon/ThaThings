@@ -1,20 +1,35 @@
-<ul>
+<ul class="rounded">
 	<li class="arrow">
-	  <%= link_to "Things", things_path %>
-	  <small class="counter">10</small>
+	  <%= link_to "Things", things_path, :class => "flip" %>
 	</li>
 
 	<li class="arrow">
 	  <%= link_to "Types", types_path %>
-	  <small class="counter">10</small>
 	</li>
 
 </ul>
 
+<!-- <ul class="rounded">
+                        <li><a href="#animdemo">Slide</a></li>
+                        <li><a href="#animdemo" class="slideup">Slide Up</a></li>
+                        <li><a href="#animdemo" class="dissolve">Dissolve</a></li>
+                        <li><a href="#animdemo" class="pop">Pop</a></li>
+                        <li><a href="#animdemo" class="flip">Flip</a></li>
+					    <li><a href="<%= things_path %>" class="flip">Fuck</a></li>	
+
+
+                    </ul>
+
+					<div id="animdemo">
+		                <div style="font-size: 1.5em; text-align: center; margin: 160px 0 90px; font-family: Marker felt;">
+		                    Pretty smooth, eh?            
+		                </div>
+		                <a style="margin-bottom: 120px;color:rgba(0,0,0,.9)" href="#" class="whiteButton goback">Go back</a>
+		            </div> -->
 
 <ul class="rounded">
-	<li class="forward"><a target="_blank" href="http://www.jqtouch.com/">Home</a></li>
-	<li class="forward"><a target="_blank" href="http://www.twitter.com/jqtouch">About</a></li>
-	<li class="forward"><a target="_blank" href="http://code.google.com/p/jqtouch/w/list">Help</a></li>
-	<li class="forward"><a target="_blank" href="http://code.google.com/p/jqtouch/w/list">Sign out</a></li>
+	<li class="arrow"><a target="#" href="/">Home</a></li>
+	<li class="arrow"><a target="#" href="/about">About</a></li>
+	<li class="arrow"><a target="#" href="/help">Help</a></li>
+	<li class="arrow"><%= link_to "Sign out", signout_path, method: "delete" %></li>
 </ul>
