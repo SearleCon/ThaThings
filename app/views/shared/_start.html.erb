@@ -35,20 +35,22 @@
 				    <% end %>
 			</table>
 		 </div>
-
-
     </div>
-
 
     <div class="span9">
-		<%= link_to image_tag("menuthings.jpg"), things_path %>
-		<%= link_to image_tag("menutypes.jpg"), types_path %>
-		<%= link_to image_tag("menunotes.jpg"), notes_path %>
-    </div>
-
-
-
-
+		<table class="table-condensed">
+			<tr>
+				<td><%= link_to image_tag("menuthings.jpg"), things_path %></td>
+				<td><%= link_to image_tag("menutypes.jpg"), types_path %></td>
+				<td><%= link_to image_tag("menunotes.jpg"), notes_path %></td>
+			</tr>
+			<tr>
+				<td><center><a href="<%= new_thing_path %>" class="btn btn-small"><i class="icon-plus-sign"></i> Quick Add Thing</a></center></td>
+				<td><center><a href="<%= new_type_path %>" class="btn btn-small"><i class="icon-plus-sign"></i> Quick Add Type</a></center></td>
+				<td><center><a href="<%= new_note_path %>" class="btn btn-small"><i class="icon-plus-sign"></i> Quick Add Note</a></center></td>
+			</tr>
+		</table><br><br>
+	</div>
 
 
 

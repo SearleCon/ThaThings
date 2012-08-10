@@ -297,3 +297,90 @@ aside {
 .search-query:focus + .icon-search {
     background-image: url("http://twitter.github.com/bootstrap/assets/img/glyphicons-halflings.png");
 }
+
+
+
+
+
+
+
+
+/* SHAUN added this for the Color blocks in the Help page */
+
+
+h11, h21, h31, h41, h51, h61, p1, ul1, ol1, li1, form1, input1, textarea1 {
+	padding: 0px;
+	margin: 0px;
+}
+a1.more {
+	font-size: 11px;
+	font-weight: bold;
+	color: #333333;
+	text-decoration: none;
+}
+a1.more:hover {
+	color: #FFFFFF;
+}
+
+
+.sections {
+	width: 899px;
+	height: 184px;
+	float: left;
+	padding-top: 41px;
+}
+.section1 {
+	font-size: 11px;
+	background-image: url(sec1bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 171px;
+	height: 111px;
+	float: left;
+	padding: 18px;
+	margin-left: 10px;
+}
+.section1 h3, .section4 h3 {
+	font-size: 14px;
+}
+.section2 {
+	font-size: 11px;
+	background-image: url(sec2bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 171px;
+	height: 111px;
+	float: left;
+	padding: 18px;
+	margin-left: 17px;
+}
+.section2 h3 {
+	font-size: 14px;
+	color: #1f5aa0;
+}
+.section3 {
+	font-size: 11px;
+	background-image: url(sec3bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 171px;
+	height: 111px;
+	float: left;
+	padding: 18px;
+	margin-left: 17px;
+}
+.section3 h3 {
+	font-size: 14px;
+	color: #2d680c;
+}
+.section4 {
+	font-size: 11px;
+	background-image: url(sec4bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 172px;
+	height: 111px;
+	float: left;
+	padding: 18px;
+	margin-left: 17px;
+}

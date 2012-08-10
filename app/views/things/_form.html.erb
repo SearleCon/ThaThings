@@ -20,6 +20,11 @@
     <center><%= image_tag("elaborate.jpg") %></center>
     <%= f.text_area :long_name %>
   </div>
+  <div class="field">
+    <%= f.check_box :favorite %><br><%= image_tag("checkfavorite.jpg") %>
+  </div>
+
+
   <div class="field" hidden="true">
     <%= f.number_field :type_id, :id => "type_ID" %>   <!-- used for the updating of the TypeID in application.js  -->
   </div>

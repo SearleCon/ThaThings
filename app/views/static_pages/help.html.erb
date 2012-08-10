@@ -1,6 +1,7 @@
 <% provide(:title, 'Help') %>
-<h2>How to use</h2>
-<h2><%= image_tag("logo.png") %></h2>
+
+<%= render 'layouts/ads' %>
+
 <p>
   Tutorial Video 1: ThaThings Introduction
 </p>
@@ -9,23 +10,7 @@
   <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<p>
-  Tutorial Video 2: About Things and Types
-</p>
-
-<div class="center hero-unit">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<p>
-  Tutorial Video 3: The power of Types
-</p>
-
-<div class="center hero-unit">
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/6_hJ3R8jEZM" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
 
 <%= link_to "Share ThaThings with your friends", signup_path, 
                             class: "btn btn-large btn-primary" %>
+
