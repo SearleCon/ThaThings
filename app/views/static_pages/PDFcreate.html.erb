@@ -1,0 +1,56 @@
+<!-- SHAUN - Test for PRAWN PDF Creation -->
+<%
+@pdftypes = Type.find(:all)
+@type = @pdftypes[1]
+
+# Assignment
+pdf = Prawn::Document.new
+pdf.text "Hello World #{@type.type_name}"
+pdf.render_file "public/pdf/assignment"+@pdftypes.size.to_s+".pdf"
+# Implicit Block
+Prawn::Document.generate "public/pdf/implicit.pdf" do
+  text "Hello World"
+end
+# Explicit Block
+Prawn::Document.generate "public/pdf/explicit.pdf" do |pdf|
+  pdf.text "Hello World"
+end
+%>
+<!-- SHAUN - Check this for a working example of PRAWN PDF document! -->
+<%
+pdf = Prawn::Document.new
+
+
+pdf.text "Here is a list of all your types"
+
+data = []
+@pdftypes.each do |t|
+	
+	pdf.text "#{t.type_name}"	
+	
+end	
+
+
+  pdf.stroke_horizontal_rule
+  pdf.pad(20) { pdf.text "Text padded both before and after." }
+  pdf.stroke_horizontal_rule
+  pdf.pad_top(20) { pdf.text "Text padded on the top." }
+  pdf.stroke_horizontal_rule
+  pdf.pad_bottom(20) { pdf.text "Text padded on the bottom." }
+  pdf.stroke_horizontal_rule
+
+pdf.move_down(10)
+pdf.text "Your things are on the next page"
+pdf.start_new_page
+pdf.text "Here are your things"
+
+data = [["This row should have one color"],
+          ["And this row should have another"]]
+  data += [["..."]] * 10
+  pdf.table(data, :row_colors => ["F0F0F0", "FFFFCC"])
+
+pdf.render_file "public/pdf/mydoc"+@pdftypes.size.to_s+".pdf"
+%>
+
+<br><br>
+<h2>Please note: PDF files were just created in the public/pdf directory!</h2>

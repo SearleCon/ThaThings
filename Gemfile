@@ -24,6 +24,8 @@ end
 
 gem 'jquery-rails'
 gem 'best_in_place'
+gem 'googlecharts'
+gem 'prawn'
 
 group :test do
   gem 'capybara', '1.1.2'
