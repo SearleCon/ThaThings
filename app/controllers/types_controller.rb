@@ -1,12 +1,12 @@
 class TypesController < ApplicationController
   # GET /types
   # GET /types.json
+  helper_method :sort_column, :sort_direction
+
   def index
     # @types = Type.all
     @types = Type.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
-#    @types = Type.find(:all, :conditions => ["user_id=?", current_user.id])
-    
-    
+    @types = Type.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,4 +85,15 @@ class TypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  private
+  def sort_column
+    Type.column_names.include?(params[:sort]) ? params[:sort] : "type_name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"    
+  end
+
 end

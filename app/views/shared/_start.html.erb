@@ -26,7 +26,7 @@
 		
 		 <div class="tooltip-demo well">
 			<table class="muted" style="margin-bottom: 1;">
-				<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'updated_at DESC' %>				
+				<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'type_name ASC' %>				
 					<%= form_tag types_path, :id => "types_filter", :method => 'get', :remote => true do %>
 						<% @types.each do |t| %>
 						        <tr><td><%= check_box_tag 't.id[]', t.id -%>
@@ -157,7 +157,7 @@
 		  
     </div>
 
-
+<!-- SHAUN - To ENABLE GRAPHS and CHARTS on the main screen, uncomment a few of the below. it also has the Create PDF link. -->
 <!-- SHAUN GRAPH DATA Start -->
 	<!-- <% i=0 %>
 	<% @typ.each do |t| %>
@@ -167,31 +167,16 @@
 	<% end %> -->
 
 
-	<% 
-		i=0 
-		mydata=[]
-	%>
-	
-	<% @typ.each do |t| %>
-		<% mydata[i] = t.things.count.to_i %>
-		<% i=i+1 %>
-	<% end %>
-
-	<div class="span9">
-	    <!-- <% thedata = [20, 35, 45, 1, 35, 60, 27, 12, 23, 34, 45, 65] %> -->
-		<% chart = Gchart.pie_3d(:data => mydata[0..@typ.count.to_i]) %>
-		<iframe width="350" height="250" src="<%= chart %>" frameborder="0" allowfullscreen></iframe>
-	</div>
 <!-- SHAUN GRAPH DATA End -->
 
 	<div class="span9">
 		<%= render 'shared/chart' %>
 	</div>
 	
-  </div>
+  <!-- </div> -->
 
 
- <%= link_to "Create PDF Summary",   pdf_path %>
+<!--  <%= link_to "Create PDF Summary",   pdf_path %> -->
 
 
 </div>

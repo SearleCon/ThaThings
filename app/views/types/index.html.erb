@@ -2,7 +2,7 @@
   <tr></tr>
   <tr>
 	<th></th>
-    <th><br><%= image_tag("types.jpg") %></th>
+    <th><br><%= link_to image_tag("types.jpg"), :sort => "type_name" %><%= sortable "type_name", "types" %></th>
     <th></th>
     <th></th>
     <th></th>

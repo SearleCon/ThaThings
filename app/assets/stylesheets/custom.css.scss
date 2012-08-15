@@ -384,3 +384,19 @@ a1.more:hover {
 	padding: 18px;
 	margin-left: 17px;
 }
+
+
+/* SHAUN added this for sorting up and down arrows */
+
+.current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+th .asc { 
+  background-image: url(up.jpg); 
+}
+
+th .desc { 
+  background-image: url(down.jpg); 
+}

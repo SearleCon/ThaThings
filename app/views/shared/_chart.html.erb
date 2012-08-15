@@ -1,16 +1,32 @@
-<html>
+
+<h2>Visual Breakdown of your Types</h2>
+
 <% 
-	a=[] 
-	a=[['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]]
+	i=0 
+	mydata=[]
+%>
 
-%> <%= a %>
+<% @typ.each do |t| %>
+	<% mydata[i] = t.things.count.to_i %>
+	<% i=i+1 %>
+<% end %>
 
-  <head>
+<div class="span11 tooltip-demo well">
+	<% chart = Gchart.pie_3d(:data => mydata[0..@typ.count.to_i]) %>
+	<iframe width="350" height="250" src="<%= chart %>" frameborder="0" allowfullscreen></iframe>
+</div> 
+<!-- SHAUN Above - Here is a list of the chart types: Please use one of the following: line line_xy scatter bar venn pie pie_3d jstize sparkline meter map radar. -->
+
+
+
+
+
+
+
+<!-- SHAUN - Below is the other google chart with legends -->
+<!-- <html>
+
+  <!-- <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -44,4 +60,4 @@
   <body>
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
   </body>
-</html>
+</html> -->
