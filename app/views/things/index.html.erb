@@ -7,12 +7,12 @@
 <table class="table table-striped table-condensed">
   <tr></tr>
   <tr>
+	<th><%= sortable "favorite", image_tag("favorite.png") %></th>
 	<th></th>
 	<th></th>
-	<th></th>
-	<th><br><%= image_tag("yourthings.jpg") %></th>
-    <th><%= image_tag("andtheirtypes.jpg") %></th>
-    <th></th>
+	<th><br><%= sortable "short_name", image_tag("yourthings.jpg") %></th>
+    <th><%= sortable "type_id", image_tag("andtheirtypes.jpg") %></th>
+    <th><span class="timestamp"><%= sortable "updated_at", "Activity" %></span></th>
     <th></th>
     <th></th>
   </tr>

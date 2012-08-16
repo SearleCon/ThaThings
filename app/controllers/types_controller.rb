@@ -4,9 +4,10 @@ class TypesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    # @types = Type.all
-    @types = Type.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => 15, :order => 'updated_at DESC'
-    @types = Type.order(sort_column + ' ' + sort_direction)
+    @setting = Setting.find(:all, :conditions => ["user_id=?", current_user.id])
+    
+    @types = Type.paginate :conditions => ["user_id=?", current_user.id], :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => (sort_column + ' ' + sort_direction) #'updated_at DESC'
+#    @types = Type.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,11 +90,11 @@ class TypesController < ApplicationController
   
   private
   def sort_column
-    Type.column_names.include?(params[:sort]) ? params[:sort] : "type_name"
+    Type.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"    
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"    
   end
 
 end

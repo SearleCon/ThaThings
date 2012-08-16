@@ -2,9 +2,9 @@
   <tr></tr>
   <tr>
 	<th></th>
-    <th><br><%= link_to image_tag("types.jpg"), :sort => "type_name" %><%= sortable "type_name", "types" %></th>
+    <th><br><%= sortable "type_name", image_tag("types.jpg") %></th>
     <th></th>
-    <th></th>
+    <th><span class="timestamp"><%= sortable "updated_at", "Activity" %></th>
     <th></th>
   </tr>
 

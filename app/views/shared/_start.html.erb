@@ -30,9 +30,9 @@
 					<%= form_tag types_path, :id => "types_filter", :method => 'get', :remote => true do %>
 						<% @types.each do |t| %>
 						        <tr><td><%= check_box_tag 't.id[]', t.id -%>
-						        <%= t t.type_name + " (" + t.things.count.to_s + ")" -%></tr></td>
+						        <%= t t.type_name + " (" + t.things.count.to_s + ")" -%></tr></td>								
 						<% end %>
-				    <% end %>
+				    <% end %>				
 			</table>
 		 </div>
     </div>

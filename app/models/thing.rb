@@ -16,7 +16,7 @@ class Thing < ActiveRecord::Base
     end
     
     if search
-      find(:all, :conditions => ['short_name LIKE ? or long_name LIKE ? or type_id = ?', "%#{search}%", "%#{search}%", a])
+      find(:all, :conditions => ['short_name LIKE ? or long_name LIKE ? or type_id in (?)', "%#{search}%", "%#{search}%", a])
 #      find(:all, :conditions => ['short_name LIKE ? or long_name LIKE ? or type_id LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
 #      find(:all, :conditions => ['(short_name LIKE ? or long_name LIKE ?) or (type_id LIKE (select id from types where id = ?))', "%#{search}%", "%#{search}%", "%#{search}%"])
     else

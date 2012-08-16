@@ -1,14 +1,18 @@
 class ThingsController < ApplicationController
+ helper_method :sort_column, :sort_direction  
+  
   # GET /things
   # GET /things.json
   def index
     # @things = Thing.all
     
     @setting = Setting.find(:all, :conditions => ["user_id=?", current_user.id])
+
     @things = Thing.paginate :include => :notes, :conditions => ["user_id=?", current_user.id], 
-                             :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => 'updated_at DESC' # :order => 'updated_at DESC'  
+                             :page => params[:page], :per_page => @setting.first.rowcountperpage, :order => (sort_column + ' ' + sort_direction) # :order => 'updated_at DESC'  
                              
     @things = @things.search(params[:search]) # SHAUN SEARCH
+
       
 
     respond_to do |format|
@@ -90,4 +94,16 @@ class ThingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  private
+  def sort_column
+    Thing.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"    
+  end
+  
+  
 end
