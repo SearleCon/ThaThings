@@ -11,7 +11,7 @@ class Thing < ActiveRecord::Base
     i = 0
     @typesearch = Type.all :conditions => ["type_name LIKE ?", "%#{search}%"]
     @typesearch.each do |ts|
-      a[i]=ts.id.to_s
+      a[i]=ts.id
       i=i+1
     end
     
