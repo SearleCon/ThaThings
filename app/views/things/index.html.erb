@@ -30,8 +30,8 @@
 	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
 	<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
 
-	<td><a href="#element" rel="popover" title='<%= truncate(thing.short_name, :length => 20) %>' 
-						   data-content='<%= truncate(thing.long_name, :length => 200) %>'><%= truncate(thing.short_name, :length => 50) %></a>
+	<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+						   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
 						   						
 						<% if !thing.notes.empty? %>
 							<% if thing.notes.count > 1 %>
@@ -45,7 +45,11 @@
 
 
       <% if thing.type_id? %>
+			<% if thing.type.type_name == "To Do" %>
+              <span class="label label-success"><%= thing.type.type_name %></span>
+			<% else %>
               <span class="label label-info"><%= thing.type.type_name %></span>
+			<% end %>
       <% else %>
           <span class="label label-warning">Untagged</span>
       <% end %>

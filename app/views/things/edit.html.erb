@@ -1,6 +1,6 @@
 <h2>Editing thing</h2>
 
-<% @types = Type.all %>
+<% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'type_name ASC' %>
 
 <center><%= image_tag("thingtype.jpg") %></center>
 <div class="tooltip-demo well">
