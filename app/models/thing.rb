@@ -3,7 +3,8 @@ class Thing < ActiveRecord::Base
   belongs_to :type
   belongs_to :user
   
-  validates :short_name, :presence => true  
+  validates :short_name, :presence => true
+  validates :priority, :inclusion => 1..5, :allow_nil => true # SHAUN, by default, make it that they do not have a priority
   
   # SHAUN SEARCH
   def self.search(search)

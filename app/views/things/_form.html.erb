@@ -22,15 +22,25 @@
   </div>
   <div class="field">
     <%= f.check_box :favorite %><br><%= image_tag("checkfavorite.jpg") %>
-  </div>
+  </div><br><br>
 
 
   <div class="field" hidden="true">
     <%= f.number_field :type_id, :id => "type_ID" %>   <!-- used for the updating of the TypeID in application.js  -->
   </div>
 
+
+    <%= f.select :priority, options_for_select([["No Priority", nil], [1], [2], [3], [4], [5]], @thing.priority) %>
+
   <div class="actions">
-    <%= f.submit value='Save!' %><%= image_tag("save.jpg") %>
-    
-  </div>
+    <%= f.submit value='Save!' %><%= image_tag("save.jpg") %>    
+  </div>  
+
+
+
+<div class="demo-description" style="display: none; ">
+<p>The datepicker is tied to a standard form input field.  Focus on the input (click, or use the tab key) to open an interactive calendar in a small overlay.  Choose a date, click elsewhere on the page (blur the input), or hit the Esc key to close. If a date is chosen, feedback is shown as the input's value.</p>
+</div><!-- End demo-description -->
+
+
 <% end %>

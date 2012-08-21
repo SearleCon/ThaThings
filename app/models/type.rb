@@ -4,10 +4,7 @@ class Type < ActiveRecord::Base
   
   validates :type_name, :presence => true
   
-  validates :user_id, :presence => true # SHAUN, decide if this should be here, as it is a hidden field. This is for testing purposes for now
-  # validates_uniqueness_of :type_name, :scope => [:user_id]
-  
-  
+  validates :user_id, :presence => true
   
   # SHAUN, You added the below, to make sure that the Type Name is unique PER USER
   validate :type_name_unique_per_user

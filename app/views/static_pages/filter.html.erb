@@ -1,0 +1,46 @@
+<% provide(:title, 'Filter') %>
+<h1>Filters</h1>
+
+<h2>Filter your things by any of the following</h2>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Type</a></li>
+  <li><a href="#">Priority</a></li>
+  <li><a href="#">Status</a></li>
+  <li><a href="#">Due Date</a></li>
+</ul>
+
+<div class="bs-docs-example">
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#lA" data-toggle="tab">To Do</a></li>
+      <li><a href="#lB" data-toggle="tab">Reminder</a></li>
+      <li><a href="#lC" data-toggle="tab">Task</a></li>
+      <li><a href="#lD" data-toggle="tab">Command</a></li>
+      <li><a href="#lE" data-toggle="tab">Books</a></li>
+      <li><a href="#lF" data-toggle="tab">Movies</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="lA">
+        <p>Here is a list of all your ToDos</p>
+      </div>
+      <div class="tab-pane" id="lB">
+          <%= render 'shared/show_types' %>
+      </div>
+      <div class="tab-pane" id="lC">
+        <p>Tasks</p>
+      </div>
+      <div class="tab-pane" id="lD">
+        <p>Commands</p>
+      </div>
+      <div class="tab-pane" id="lE">
+        <p>Books</p>
+      </div>
+      <div class="tab-pane" id="lF">
+        <p>Movies</p>
+      </div>
+
+
+    </div>
+  </div> <!-- /tabbable -->
+</div>

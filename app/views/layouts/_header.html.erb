@@ -16,6 +16,8 @@
         	<li><%= link_to "Home", root_path %></li>
           	<li><%= link_to "My Things", things_path %></li>
             <li><%= link_to "Types", types_path %></li>
+    	    <li><%= link_to "Filters",   filter_path %></li>
+
 
 			<% @setting = Setting.find(:all, :conditions => ["user_id=?", current_user.id]) %> <!-- SHAUN change this to be conditional and not load every time -->
 			

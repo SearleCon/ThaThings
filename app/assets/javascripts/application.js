@@ -17,6 +17,7 @@
 //= require best_in_place
 //= require_tree .
 $(document).ready(function() {
+
     $('#myCarousel').carousel({ interval: 2000 })
 //  $("a").tooltip(); // this will trigger a tooltip on all <a> elements
     $("[rel=tooltip]").tooltip(); // this will trigger a tooltip on all that have rel="tooltip" elements
@@ -38,7 +39,6 @@ $(document).ready(function() {
         $("#type_ID").attr('value', $(this).attr('id'));
     })
 });
-
 
 
 

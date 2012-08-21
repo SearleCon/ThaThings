@@ -28,5 +28,5 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/pdf',     to: 'static_pages#PDFcreate'
-
+  match '/filter',   to: 'static_pages#filter'
 end
