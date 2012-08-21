@@ -1,8 +1,8 @@
 
-<% @tng = Thing.find(:all) %>
-<% @typ = Type.find(:all) %>
-<% @nte = Note.find(:all) %>
-<% @fav = Thing.find(:all, :conditions => ['favorite = ?', true]) %>
+<% @tng = Thing.find(:all, :conditions => ["user_id=?", current_user.id]) %>
+<% @typ = Type.find(:all, :conditions => ["user_id=?", current_user.id]) %>
+<% @nte = Note.find(:all, :conditions => ["user_id=?", current_user.id]) %>
+<% @fav = Thing.find(:all, :conditions => ['favorite = ? and user_id=?', true, current_user.id]) %>
 
 <div class="container-fluid">
   <div class="row-fluid">
@@ -70,7 +70,7 @@
 				<% a[0] = '<i class="icon-star-empty"></i>' %>
 				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
 				
-				<% @tng = Thing.find(:all, :order => "created_at desc", :limit => 5) %> <!-- SHAUN Do this kind of sort to find the last added -->
+				<% @tng = Thing.all :conditions => ["user_id=?", current_user.id], :order => "created_at desc", :limit => 5 %>
 				<% @tng.each do |thing| %>
 				  <tr>
 					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
@@ -125,7 +125,7 @@
 				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
 				
 				
-				<% @tng = Thing.paginate :conditions => ['favorite = ?', true], :page => params[:page], :per_page => 10, :order => 'updated_at DESC' %>
+				<% @tng = Thing.paginate :conditions => ['favorite = ? and user_id=?', true, current_user.id], :page => params[:page], :per_page => 10, :order => 'updated_at DESC' %>				
 				<% @tng.each do |thing| %>
 				  <tr>
 					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
