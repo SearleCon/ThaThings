@@ -24,9 +24,11 @@ SampleApp::Application.routes.draw do
   root to: 'static_pages#home'
   # match '/', to: 'static_pages#home'
 
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
-  match '/pdf',     to: 'static_pages#PDFcreate'
-  match '/filter',   to: 'static_pages#filter'
+  match '/help',           to: 'static_pages#help'
+  match '/about',          to: 'static_pages#about'
+  match '/contact',        to: 'static_pages#contact'
+  match '/pdf',            to: 'static_pages#PDFcreate'
+  match '/filter',         to: 'static_pages#filter'
+  match '/filter_types',   to: 'static_pages#filter_types'
+
 end

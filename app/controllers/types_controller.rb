@@ -86,8 +86,7 @@ class TypesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  
+    
   private
   def sort_column
     Type.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"

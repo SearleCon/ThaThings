@@ -1,0 +1,23 @@
+<% @types = Type.find(:all, :conditions => ["user_id=?", current_user.id]) %>
+
+ <div class="tabbable tabs-left">
+   <ul class="nav nav-tabs">
+     <li class="active"><a href="#lAt" data-toggle="tab">Help</a></li>
+  	 <% @types.each do |t| %>
+     	<li><a href="<%= '#'+t.type_name.gsub(/\s+/, '').strip %>" data-toggle="tab"><%= truncate(t.type_name, :length => 10) %></a></li>
+  	 <% end %>
+   </ul>
+   <div class="tab-content">
+     <div class="tab-pane active" id="lAt">
+       <p>Select a Type from the list on the left</p>
+     </div>
+
+
+  	 <% @types.each do |t| %>
+	     <div class="tab-pane" id="<%= t.type_name.gsub(/\s+/, '').strip %>">
+			 <h2><%= 'Listing all your Things for type: '+t.type_name %></h2>
+	     </div>
+  	 <% end %>
+
+   </div>
+</div>

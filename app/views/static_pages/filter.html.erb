@@ -1,46 +1,30 @@
 <% provide(:title, 'Filter') %>
-<h1>Filters</h1>
 
-<h2>Filter your things by any of the following</h2>
+<h2>Filter your things</h2>
 
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Type</a></li>
-  <li><a href="#">Priority</a></li>
-  <li><a href="#">Status</a></li>
-  <li><a href="#">Due Date</a></li>
-</ul>
-
-<div class="bs-docs-example">
-  <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#lA" data-toggle="tab">To Do</a></li>
-      <li><a href="#lB" data-toggle="tab">Reminder</a></li>
-      <li><a href="#lC" data-toggle="tab">Task</a></li>
-      <li><a href="#lD" data-toggle="tab">Command</a></li>
-      <li><a href="#lE" data-toggle="tab">Books</a></li>
-      <li><a href="#lF" data-toggle="tab">Movies</a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active" id="lA">
-        <p>Here is a list of all your ToDos</p>
-      </div>
-      <div class="tab-pane" id="lB">
-          <%= render 'shared/show_types' %>
-      </div>
-      <div class="tab-pane" id="lC">
-        <p>Tasks</p>
-      </div>
-      <div class="tab-pane" id="lD">
-        <p>Commands</p>
-      </div>
-      <div class="tab-pane" id="lE">
-        <p>Books</p>
-      </div>
-      <div class="tab-pane" id="lF">
-        <p>Movies</p>
-      </div>
-
-
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Help</a></li>
+    <li><a href="#tab2" data-toggle="tab">Type</a></li>
+    <li><a href="#tab3" data-toggle="tab">Priority</a></li>
+    <li><a href="#tab4" data-toggle="tab">Status</a></li>
+    <li><a href="#tab5" data-toggle="tab">Due Date</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p>Please select one of the items above to begin</p>
     </div>
-  </div> <!-- /tabbable -->
+    <div class="tab-pane" id="tab2">
+        <%= render 'static_pages/filter_types' %>
+    </div>
+    <div class="tab-pane" id="tab3">
+        <%= render 'static_pages/filter_priorities' %>
+    </div>
+    <div class="tab-pane" id="tab4">
+      <p>Status</p>
+    </div>
+    <div class="tab-pane" id="tab5">
+      <p>Due Date</p>
+    </div>
+  </div>
 </div>

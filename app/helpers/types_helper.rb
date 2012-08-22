@@ -1,2 +1,2 @@
-module TypesHelper
+module TypesHelper  
 end
