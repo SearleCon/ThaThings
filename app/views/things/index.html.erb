@@ -8,6 +8,7 @@
   <tr></tr>
   <tr>
 	<th><%= sortable "favorite", image_tag("favorite.png") %></th>
+	<th><%= sortable "archive", image_tag("done.jpg") %></th>
 	<th></th>
 	<th></th>
 	<th><br><%= sortable "short_name", image_tag("yourthings.jpg") %></th>
@@ -19,12 +20,18 @@
 
 <% a = [] %>
 <% a[0] = '<i class="icon-star-empty"></i>' %>
-<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom.css) -->
+
+
+<% b = [] %>
+<% b[0] = '<i class="icon-ok-circle"></i>' %>
+<% b[1] = '<i class="icon-ok-green"></i>' %> 
 
 
 <% @things.each do |thing| %>
   <tr>
 	<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+	<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
 
 	
 	<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
@@ -42,7 +49,6 @@
 					     <% end %></td>
 
     <td>
-
 
       <% if thing.type_id? %>
 			<% if thing.type.type_name == "To Do" %>
