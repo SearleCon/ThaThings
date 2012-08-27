@@ -70,10 +70,17 @@
 				<% a[0] = '<i class="icon-star-empty"></i>' %>
 				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
 				
+
+				<% b = [] %>
+				<% b[0] = '<i class="icon-ok-circle"></i>' %>
+				<% b[1] = '<i class="icon-ok-green"></i>' %> 
+				
+				
 				<% @tng = Thing.all :conditions => ["user_id=?", current_user.id], :order => "created_at desc", :limit => 5 %>
 				<% @tng.each do |thing| %>
 				  <tr>
 					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+					<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
 
 
 					<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
@@ -123,12 +130,18 @@
 				<% a = [] %>
 				<% a[0] = '<i class="icon-star-empty"></i>' %>
 				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+				<% b = [] %>
+				<% b[0] = '<i class="icon-ok-circle"></i>' %>
+				<% b[1] = '<i class="icon-ok-green"></i>' %> 
 				
 				
-				<% @tng = Thing.paginate :conditions => ['favorite = ? and user_id=?', true, current_user.id], :page => params[:page], :per_page => 10, :order => 'updated_at DESC' %>				
+				<% @tng = Thing.paginate :conditions => ['favorite = ? and user_id=?', true, current_user.id], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
 				<% @tng.each do |thing| %>
 				  <tr>
 					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+					<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
 
 
 					<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
