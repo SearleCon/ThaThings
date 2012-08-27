@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822143538) do
+ActiveRecord::Schema.define(:version => 20120827133744) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20120822143538) do
     t.boolean  "favorite",        :default => false
     t.integer  "priority"
     t.boolean  "archive",         :default => false
+    t.datetime "target_date"
   end
 
   create_table "types", :force => true do |t|

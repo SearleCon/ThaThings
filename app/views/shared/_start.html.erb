@@ -56,146 +56,464 @@
 
 
 
-
-
-
-
-
-
     <div class="span9">
-		<h2>Your last 5 things created</h2>
-		<table class="table table-striped table-bordered table-condensed">
+		<div class="tabbable"> <!-- Only required for left/right tabs -->
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-star-empty"></i> Favorites</a></li>
+		    <li><a href="#tab2" data-toggle="tab"><i class="icon-time"></i> Recent</a></li>
+		    <li><a href="#tab3" data-toggle="tab"><i class="icon-cog"></i> Due Today</a></li>
+		    <li><a href="#tab4" data-toggle="tab"><i class="icon-calendar"></i> Upcoming</a></li>
+		    <li><a href="#tab5" data-toggle="tab"><i class="icon-warning-sign"></i> Overdue</a></li>
+		    <!-- <li><a href="#tab6" data-toggle="tab">Charts</a></li> -->
+		  </ul>
+		  <div class="tab-content">
+		    <div class="tab-pane active" id="tab1">
 
-				<% a = [] %>
-				<% a[0] = '<i class="icon-star-empty"></i>' %>
-				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+
+
+
+
+
+
+
+
+
+				<table class="table table-striped table-bordered table-condensed">
+					<h2>Your favorite things</h2>
+					<% a = [] %>
+					<% a[0] = '<i class="icon-star-empty"></i>' %>
+					<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+					<% b = [] %>
+					<% b[0] = '<i class="icon-ok-circle"></i>' %>
+					<% b[1] = '<i class="icon-ok-green"></i>' %> 
+
+
+					<% @tng = Thing.paginate :conditions => ['favorite = ? and user_id=?', true, current_user.id], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
+					<% @tng.each do |thing| %>
+					  <tr>
+						<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+						<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
+
+
+						<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+						<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+
+						<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+											   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
+
+											<% if !thing.notes.empty? %>
+												<% if thing.notes.count > 1 %>
+													<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+												<% else %>
+													<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+												<% end %>							
+										     <% end %></td>
+
+					    <td>
+
+
+					      <% if thing.type_id? %>
+								<% if thing.type.type_name == "To Do" %>
+					              <span class="label label-success"><%= thing.type.type_name %></span>
+								<% else %>
+					              <span class="label label-info"><%= thing.type.type_name %></span>
+								<% end %>
+					      <% else %>
+					          <span class="label label-warning">Untagged</span>
+					      <% end %>
+					    </td>
+						<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
+					  </tr>
+					<% end %>				
+				</table>
+				<%= will_paginate @tng %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		    </div>
+		    <div class="tab-pane" id="tab2">
+
+
+
+
+
+
+
+
+					<h2>Your last 5 things created</h2>
+					<table class="table table-striped table-bordered table-condensed">
+
+							<% a = [] %>
+							<% a[0] = '<i class="icon-star-empty"></i>' %>
+							<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+							<% b = [] %>
+							<% b[0] = '<i class="icon-ok-circle"></i>' %>
+							<% b[1] = '<i class="icon-ok-green"></i>' %> 
+
+
+							<% @tng = Thing.all :conditions => ["user_id=?", current_user.id], :order => "created_at desc", :limit => 5 %>
+							<% @tng.each do |thing| %>
+							  <tr>
+								<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+								<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
+
+
+								<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+								<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+
+								<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+													   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
+
+													<% if !thing.notes.empty? %>
+														<% if thing.notes.count > 1 %>
+															<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+														<% else %>
+															<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+														<% end %>							
+												     <% end %></td>
+
+							    <td>
+
+
+							      <% if thing.type_id? %>
+										<% if thing.type.type_name == "To Do" %>
+							              <span class="label label-success"><%= thing.type.type_name %></span>
+										<% else %>
+							              <span class="label label-info"><%= thing.type.type_name %></span>
+										<% end %>
+
+							      <% else %>
+							          <span class="label label-warning">Untagged</span>
+							      <% end %>
+							    </td>
+								<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
+							  </tr>
+							<% end %>	
+						</table>
+
+
+
+
+
+
+
+
+
+
+		    </div>
+		    <div class="tab-pane" id="tab3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<table class="table table-striped table-bordered table-condensed">
+					<h2>Things Due Today</h2>
+					<% a = [] %>
+					<% a[0] = '<i class="icon-star-empty"></i>' %>
+					<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+					<% b = [] %>
+					<% b[0] = '<i class="icon-ok-circle"></i>' %>
+					<% b[1] = '<i class="icon-ok-green"></i>' %> 
+
+
+					<% @today = Thing.paginate :conditions => ['user_id=? and (target_date >= ? and target_date <= ?)', current_user.id, Date.today.beginning_of_day, Date.today.end_of_day], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
+					<% @today.each do |thing| %>
+					  <tr>
+						<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+						<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
+
+
+						<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+						<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+
+						<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+											   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
+
+											<% if !thing.notes.empty? %>
+												<% if thing.notes.count > 1 %>
+													<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+												<% else %>
+													<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+												<% end %>							
+										     <% end %></td>
+
+					    <td>
+
+
+					      <% if thing.type_id? %>
+								<% if thing.type.type_name == "To Do" %>
+					              <span class="label label-info"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-success"><%= thing.type.type_name %></span>
+								<% else %>
+					              <span class="label label-info"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-info"><%= thing.type.type_name %></span>
+								<% end %>
+					      <% else %>
+					          <span class="label label-info"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-warning">Untagged</span></span>
+					      <% end %>
+					    </td>
+						<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
+					  </tr>
+					<% end %>				
+				</table>
+				<%= will_paginate @today %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		    </div>
+		    <div class="tab-pane" id="tab4">
+					
 				
-
-				<% b = [] %>
-				<% b[0] = '<i class="icon-ok-circle"></i>' %>
-				<% b[1] = '<i class="icon-ok-green"></i>' %> 
 				
 				
-				<% @tng = Thing.all :conditions => ["user_id=?", current_user.id], :order => "created_at desc", :limit => 5 %>
-				<% @tng.each do |thing| %>
-				  <tr>
-					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
-					<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
-
-
-					<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
-					<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
-
-					<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
-										   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
-
-										<% if !thing.notes.empty? %>
-											<% if thing.notes.count > 1 %>
-												<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
-											<% else %>
-												<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
-											<% end %>							
-									     <% end %></td>
-
-				    <td>
-
-
-				      <% if thing.type_id? %>
-							<% if thing.type.type_name == "To Do" %>
-				              <span class="label label-success"><%= thing.type.type_name %></span>
-							<% else %>
-				              <span class="label label-info"><%= thing.type.type_name %></span>
-							<% end %>
-
-				      <% else %>
-				          <span class="label label-warning">Untagged</span>
-				      <% end %>
-				    </td>
-					<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
-				  </tr>
-				<% end %>	
-			</table>
-    </div>
-
-
-
-
-
-
-
-
-    <div class="span9">
-			<table class="table table-striped table-bordered table-condensed">
-				<h2>Your favorite things</h2>
-				<% a = [] %>
-				<% a[0] = '<i class="icon-star-empty"></i>' %>
-				<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
-
-
-				<% b = [] %>
-				<% b[0] = '<i class="icon-ok-circle"></i>' %>
-				<% b[1] = '<i class="icon-ok-green"></i>' %> 
 				
 				
-				<% @tng = Thing.paginate :conditions => ['favorite = ? and user_id=?', true, current_user.id], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
-				<% @tng.each do |thing| %>
-				  <tr>
-					<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
-					<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
+				
+				
+				<table class="table table-striped table-bordered table-condensed">
+					<h2>Things due in the next 5 days</h2>
+					<% a = [] %>
+					<% a[0] = '<i class="icon-star-empty"></i>' %>
+					<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
 
 
-					<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
-					<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
-
-					<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
-										   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
-
-										<% if !thing.notes.empty? %>
-											<% if thing.notes.count > 1 %>
-												<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
-											<% else %>
-												<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
-											<% end %>							
-									     <% end %></td>
-
-				    <td>
+					<% b = [] %>
+					<% b[0] = '<i class="icon-ok-circle"></i>' %>
+					<% b[1] = '<i class="icon-ok-green"></i>' %> 
 
 
-				      <% if thing.type_id? %>
-							<% if thing.type.type_name == "To Do" %>
-				              <span class="label label-success"><%= thing.type.type_name %></span>
-							<% else %>
-				              <span class="label label-info"><%= thing.type.type_name %></span>
-							<% end %>
-				      <% else %>
-				          <span class="label label-warning">Untagged</span>
-				      <% end %>
-				    </td>
-					<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
-				  </tr>
-				<% end %>				
-			</table>
-			<%= will_paginate @tng %>
-		  
-    </div>
-
-<!-- SHAUN - To ENABLE GRAPHS and CHARTS on the main screen, uncomment a few of the below. it also has the Create PDF link. -->
-<!-- SHAUN GRAPH DATA Start -->
-	<!-- <% i=0 %>
-	<% @typ.each do |t| %>
-		<% a[i] = t.type_name + " (" + t.things.count.to_s + ")" %>
-		<%= a[i] %>,
-		<% i=i+1 %>
-	<% end %> -->
+					<% @today = Thing.paginate :conditions => ['user_id=? and (target_date >= ? and target_date <= ?)', current_user.id, Date.today+1, Date.today+5], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
+					<% @today.each do |thing| %>
+					  <tr>
+						<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+						<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
 
 
-<!-- SHAUN GRAPH DATA End -->
+						<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+						<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
 
-	<div class="span9">
-		<%= render 'shared/chart' %>
+						<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+											   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
+
+											<% if !thing.notes.empty? %>
+												<% if thing.notes.count > 1 %>
+													<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+												<% else %>
+													<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+												<% end %>							
+										     <% end %></td>
+
+					    <td>
+
+
+					      <% if thing.type_id? %>
+								<% if thing.type.type_name == "To Do" %>
+					              <span class="label label-warning"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-success"><%= thing.type.type_name %></span>
+								<% else %>
+					              <span class="label label-warning"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-info"><%= thing.type.type_name %></span>
+								<% end %>
+					      <% else %>
+					          <span class="label label-warning"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-warning">Untagged</span></span>
+					      <% end %>
+					    </td>
+						<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
+					  </tr>
+					<% end %>				
+				</table>
+				<%= will_paginate @today %>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+		    </div>
+			
+			<div class="tab-pane" id="tab5">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<table class="table table-striped table-bordered table-condensed">
+					<h2>Overdue Things</h2>
+					<% a = [] %>
+					<% a[0] = '<i class="icon-star-empty"></i>' %>
+					<% a[1] = '<i class="icon-star-yellow"></i>' %> <!-- SHAUN, you added this icon yellow star into the CSS stylesheet (custom) -->
+
+
+					<% b = [] %>
+					<% b[0] = '<i class="icon-ok-circle"></i>' %>
+					<% b[1] = '<i class="icon-ok-green"></i>' %> 
+
+
+					<% @today = Thing.paginate :conditions => ['user_id=? and target_date < ? and archive != ?', current_user.id, Date.today, "t"], :page => params[:page], :per_page => 10, :order => 'archive, updated_at DESC' %>				
+					<% @today.each do |thing| %>
+					  <tr>
+						<td><%= best_in_place thing, :favorite, type: :checkbox, collection: a %></td>
+						<td><%= best_in_place thing, :archive, type: :checkbox, collection: b %></td>
+
+
+						<td><span rel="tooltip" title="View"><%= link_to image_tag("open.jpg"), thing %></span></td>
+						<td><span rel="tooltip" title="Edit"><%= link_to image_tag("edit.jpg"), edit_thing_path(thing) %></span></td>
+
+						<td><a href="#element" rel="popover" title="<%= truncate(thing.short_name, :length => 20) %>" 
+											   data-content="<%= truncate(thing.long_name, :length => 200) %>"><%= truncate(thing.short_name, :length => 50) %></a>
+
+											<% if !thing.notes.empty? %>
+												<% if thing.notes.count > 1 %>
+													<span rel="tooltip" title="View Notes<%=' ('+thing.notes.count.to_s+')'%>"> <%= link_to image_tag("notesmallmulti.png"), thing %></span>
+												<% else %>
+													<span rel="tooltip" title="View Note"> <%= link_to image_tag("notesmall.png"), thing %></span>
+												<% end %>							
+										     <% end %></td>
+
+					    <td>
+
+
+					      <% if thing.type_id? %>
+								<% if thing.type.type_name == "To Do" %>
+					              <span class="label label-important"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-success"><%= thing.type.type_name %></span>
+								<% else %>
+					              <span class="label label-important"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-info"><%= thing.type.type_name %></span>
+								<% end %>
+					      <% else %>
+					          <span class="label label-important"><%= thing.target_date.strftime("%Y-%m-%d") %></span> <span class="label label-warning">Untagged</span></span>
+					      <% end %>
+					    </td>
+						<td><span rel="tooltip" title="Delete"><%= link_to image_tag("trash.jpg"), thing, confirm: 'Are you sure?', method: :delete %></span></td>
+					  </tr>
+					<% end %>				
+				</table>
+				<%= will_paginate @today %>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+			
+		    <!-- <div class="tab-pane" id="tab6"> -->
+
+
+
+				<!-- SHAUN - To ENABLE GRAPHS and CHARTS on the main screen, uncomment a few of the below. it also has the Create PDF link. -->
+				<!-- SHAUN GRAPH DATA Start -->
+					<!-- <% i=0 %>
+					<% @typ.each do |t| %>
+						<% a[i] = t.type_name + " (" + t.things.count.to_s + ")" %>
+						<%= a[i] %>,
+						<% i=i+1 %>
+					<% end %> -->
+
+
+				<!-- SHAUN GRAPH DATA End -->
+
+					<!-- <div class="span9"> -->
+						 <!-- <% render 'shared/chart' %> -->
+					<!-- </div>  -->
+
+				  <!-- </div> -->
+
+
+
+
+		    <!-- </div> -->
+
+		  </div>
+		</div>
 	</div>
-	
-  <!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--  <%= link_to "Create PDF Summary",   pdf_path %> -->

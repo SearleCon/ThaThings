@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require jquery.purr
 //= require best_in_place
+//= require bootstrap-datepicker
 //= require_tree .
 $(document).ready(function() {
 
@@ -67,3 +68,8 @@ $.rails.showConfirmDialog = function(link) {
     });
 };
 // The above 3 paragraphs are for the confirm delete modal box. It works well. END
+
+
+$(document).on("focus", "[databehaviour~='datepicker']", function(e){
+    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
+});
