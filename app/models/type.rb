@@ -2,7 +2,7 @@ class Type < ActiveRecord::Base
   has_many :things, dependent: :destroy 
   belongs_to :user
   
-  validates :type_name, :presence => true
+  validates :type_name, :presence => true, :length => { :maximum => 15 }
   
   validates :user_id, :presence => true
   
