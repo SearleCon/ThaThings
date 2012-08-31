@@ -2,15 +2,42 @@
 
 <% @types = Type.all :conditions => ["user_id=?", current_user.id], :order => 'type_name ASC' %>
 
-<center><%= image_tag("thingtype.jpg") %></center>
-<div class="tooltip-demo well">
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTypes">
+          <p class="muted" style="margin-bottom: 0;"><b>1. Click here to change the Type (Currently set as "<%= @thing.type.type_name %>")</b></p>
+      </a>
+    </div>
+    <div id="collapseTypes" class="accordion-body collapse in">
+      <div class="accordion-inner">
 
-  <div class="btn-group" data-toggle="buttons-radio">
-    <% @types.each do |t| %>
-        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
-    <% end %>
+
+
+		<center><%= image_tag("thingtype.jpg") %></center>
+		<div class="tooltip-demo well">
+
+		  <div class="btn-group" data-toggle="buttons-radio">
+		    <% @types.each do |t| %>
+		        <button class="btn" btn_success id=<%= t.id %>><%= t.type_name %></button>
+		    <% end %>
+		  </div>
+		</div>
+
+
+
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
 
 <%= render 'form' %>
 
